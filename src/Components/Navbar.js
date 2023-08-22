@@ -47,7 +47,7 @@ const Navbar = () => {
         <Link to='/about' ><li onClick={handleShow}>About</li></Link>
         <Link to='/products' ><li onClick={handleShow}>Products</li></Link>
         <Link to='/contact' ><li onClick={handleShow}>Contact</li></Link>
-        <Link to='/login'><li id='active' onClick={handleShow}>Login</li></Link>
+        <Link to='/'><li id='active' onClick={handleShow}>Login</li></Link>
         <Link to='/cart' >
           <li onClick={handleShow}>
             <AiOutlineShoppingCart id="carticon" />
