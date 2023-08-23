@@ -33,7 +33,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
+    <nav className={addclass}>
       <Link to='/'><img src={icon} alt='LOGO NOT AVAILABLE' /></Link>
       {screenwidth <= 800 &&
         <ul>
@@ -43,7 +43,7 @@ const Navbar = () => {
           }
         </ul>
       }
-      <ul id='collapse' className={addclass}>
+      <ul id='collapse'>
         <Link to='/about' ><li onClick={handleShow}>About</li></Link>
         <Link to='/products' ><li onClick={handleShow}>Products</li></Link>
         <Link to='/contact' ><li onClick={handleShow}>Contact</li></Link>

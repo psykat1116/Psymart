@@ -15,7 +15,6 @@ const Welcome = (props) => {
             </div>
             <div className="right">
                 <img src={welcomeImg} alt="Not Available" />
-                <div className='box'></div>
             </div>
         </div>
     )

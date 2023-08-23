@@ -36,7 +36,7 @@ const Footer = () => {
         <hr />
         <div className="copy">
           <p>© {new Date().getFullYear()} Saikat Samanta. All Rights Reserved</p>
-          <p>PRIVACY POLICY<br />TERMS & CONDITIONS</p>
+          <p>PRIVACY POLICY, TERMS & CONDITIONS</p>
         </div>
       </div>
     </div>

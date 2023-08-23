@@ -22,8 +22,8 @@ nav {
   padding: 10px 0px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  z-index: 10;
+  align-items: flex-start;
+  transition: height 0.2s linear;
 }
 
 nav ul {
@@ -33,6 +33,7 @@ nav ul {
   font-size: 1rem;
   font-weight: bold;
   margin: 0 2rem;
+  margin-top: 5px;
 }
 
 nav ul li {
@@ -97,41 +98,27 @@ nav #collapse a:nth-child(4) li {
 }
 
 @media (max-width: 800px) {
+  nav.active {
+    height: 240px;
+  }
   nav ul {
     flex-direction: column;
-    margin: 0 1rem;
   }
-
-  #responsivemenu {
-    z-index: 50;
-  }
-
-  #responsivemenu:hover {
-    background-color: #232323;
-  }
-
   #collapse {
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    user-select: none;
     position: absolute;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    min-width: 100vw;
-    top: 0;
-    left: 0;
-    opacity: 0;
+    width: 100%;
+    top: 70px;
+    left: -32px;
+    padding: 10px 0;
   }
-
-  #collapse.active {
-    opacity: 1;
-    user-select: auto;
-  }
-
   #collapse li {
-    margin: 8px 0;
-    font-size: 1.3rem;
+    position: relative;
+    justify-content: left;
+    align-items: end;
+    padding: 2px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 5px;
   }
 }
 
@@ -188,21 +175,17 @@ nav #collapse a:nth-child(4) li {
   line-height: 70px;
 }
 
+#welcome .right {
+  position: relative;
+  padding: 0 10px;
+}
+
 #welcome .right img {
   position: relative;
   aspect-ratio: auto;
   height: 250px;
   box-shadow: 5px 5px 15px -10px #000;
   z-index: 1;
-}
-
-#welcome .right .box {
-  position: absolute;
-  height: 200px;
-  width: 250px;
-  background-color: blue;
-  top: 40px;
-  right: -40px;
 }
 
 #welcome .left button {
@@ -218,12 +201,45 @@ nav #collapse a:nth-child(4) li {
   color: #fff;
 }
 
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  #about #welcome label {
+    font-size: 2rem;
+  }
+
+  #welcome {
+    width: 90vw;
+  }
+
+  #welcome label {
+    font-size: 3rem;
+    line-height: 50px;
+  }
+
+  #welcome .right img {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #welcome {
+    width: 95vw;
+    flex-direction: column-reverse;
+  }
+  #welcome .left {
+    width: 100%;
+    padding: 15px;
+  }
+  #welcome .right img {
+    height: 175px;
+  }
+}
+
 /* ?------------------------------Service Component Design------------------------------*/
 
 #service {
   position: relative;
   width: 100%;
-  height: 40vh;
+  min-height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -270,6 +286,30 @@ nav #collapse a:nth-child(4) li {
   margin-left: 20px;
 }
 
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  #service #services {
+    width: 95vw;
+  }
+  #service #services div div {
+    padding: 5px;
+  }
+  #services div {
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #service #services {
+    flex-direction: column;
+  }
+  #service #services div div {
+    width: 250px;
+  }
+  #service div:where(.firstsec, .secsecond, .thirdsec) {
+    margin-bottom: 20px;
+  }
+}
+
 /* ?--------------------------------Trust Component CSS Design-------------------------------- */
 
 #trusted {
@@ -279,7 +319,6 @@ nav #collapse a:nth-child(4) li {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   background-color: whitesmoke;
 }
 
@@ -305,7 +344,6 @@ nav #collapse a:nth-child(4) li {
 
 #trust .company label {
   font-size: 25px;
-  background-color: red;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -316,9 +354,35 @@ nav #collapse a:nth-child(4) li {
   align-items: center;
 }
 
+@media screen and (min-width: 750px) and (max-width: 1100px) {
+  #trust {
+    width: 95vw;
+    padding: 20px 0;
+  }
+  trust .company {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #trust {
+    width: 98vw;
+    padding: 20px 0;
+  }
+  #trust .company {
+    width: 95%;
+  }
+  #trust .company label {
+    font-size: 20px;
+    height: 40px;
+    width: 40px;
+  }
+}
+
 /* ?-------------------------Contact Component Design---------------------------- */
 
 #contacts {
+  position: relative;
   background-color: whitesmoke;
   display: flex;
   justify-content: space-between;
@@ -329,6 +393,8 @@ nav #collapse a:nth-child(4) li {
 }
 
 iframe {
+  position: relative;
+  width: 98vw;
   margin: 80px 0 30px;
 }
 
@@ -491,6 +557,20 @@ hr {
   width: 95vw;
 }
 
+@media screen and (max-width: 767px) {
+  .copyright .copy {
+    flex-direction: column;
+  }
+
+  #footer .main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gotoshop {
+    top: -10%;
+  }
+}
+
 /* ?-------------------------Error Page Design--------------------------------------*/
 
 #error {
@@ -531,7 +611,8 @@ hr {
 /* ?-------------------------Feature Product Page Design--------------------------- */
 
 #fproduct {
-  height: 60vh;
+  position: relative;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -539,7 +620,8 @@ hr {
 }
 
 #featureproduct {
-  width: min(800px, 80vw);
+  position: relative;
+  width: auto;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -555,7 +637,7 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: min(900px, 80vw);
+  width: 900px;
   margin-top: 50px;
 }
 
@@ -617,6 +699,23 @@ hr {
   font-weight: bold;
 }
 
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .fgallery {
+    max-width: 800px;
+  }
+
+  .fgallery .card figure img {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .fgallery {
+    flex-direction: column;
+    max-width: 300px;
+  }
+}
+
 /* ?------------------------------Single Page Image Portion Gallery Design------------------------------ */
 
 #single {
@@ -626,7 +725,7 @@ hr {
   justify-content: center;
   align-items: center;
   background-color: whitesmoke;
-  padding: 5vh;
+  padding: 40px;
 }
 
 #single #main {
@@ -634,7 +733,7 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: min(1100px, 80vw);
+  width: 70vw;
 }
 
 #single #left {
@@ -670,7 +769,6 @@ hr {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* background-color: red; */
 }
 
 #single #right #mrp {
@@ -828,6 +926,51 @@ hr {
 
 a {
   text-decoration: none;
+}
+
+@media screen and (max-width: 1023px) and (min-width: 767px) {
+  #single #main {
+    width: 85vw;
+  }
+  #single {
+    padding: 5px;
+  }
+  #single #left .all-img img {
+    height: 50px;
+  }
+  #single #left .main-img img {
+    height: 100px;
+  }
+  #single #right {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #single {
+    padding: 20px;
+  }
+  #single #main {
+    flex-direction: column;
+    width: 85vw;
+  }
+  #single #left {
+    flex-direction: column-reverse;
+    margin-bottom: 10px;
+  }
+  #single #left .all-img {
+    flex-direction: row;
+  }
+  #single #left .all-img img {
+    height: 50px;
+    padding: 5px;
+  }
+  #single #left .main-img img {
+    height: 100px;
+  }
+  #single #right ul li {
+    text-align: center;
+  }
 }
 
 /* ?----------------------------------Products Page Design CSS----------------------------------- */
@@ -1050,7 +1193,7 @@ button {
 .allproduct #gridview .card figure img {
   position: relative;
   aspect-ratio: auto;
-  height: 150px;
+  width: calc(100% / 3);
   width: 100%;
   transition: all 0.2s ease;
 }
@@ -1119,6 +1262,7 @@ button {
   border: 2px solid hsl(0, 0%, 14%);
   padding: 10px;
   margin-bottom: 10px;
+  background-color: red;
 }
 
 .listbox a {
@@ -1186,6 +1330,35 @@ button {
   color: #fff;
 }
 
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  #allitems .rightcol .allproduct #gridview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #allitems {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #allitems .rightcol .allproduct #gridview {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #allitems {
+    padding: 1rem;
+  }
+  #allitems .leftcol .colors .color button {
+    max-height: 10px;
+    max-width: 10px;
+  }
+  #allitems .leftcol {
+    width: 30vw;
+    margin-right: 20px;
+  }
+  #allitems .rightcol {
+    width: 70vw;
+  }
+}
+
 /* ?----------------------------------Cart Item Designing---------------------------------------- */
 
 #cart {
@@ -1208,7 +1381,7 @@ button {
 
 #cartbody {
   position: relative;
-  width: min(1100px, 95vw);
+  width: 80vw;
   padding: 10px;
 }
 
@@ -1376,4 +1549,18 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  #cartbody{
+    width: 95vw;
+  }
+  #order-items .label,
+  #order-items .items #unique-item {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  #cart #total-price .total-box{
+    width: 50%;
+  }
 }

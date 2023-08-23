@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Cartcontext from '../Context/Cartcontext'
 import Cartitem from './Cartitem';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,10 @@ import FormatPrice from '../Helper/FormatPrice';
 
 const Cart = () => {
     const { cart, deleteAllItem, total_amount, shipping_fee } = useContext(Cartcontext);
+    const [swidth, setswidth] = useState(window.screen.width);
+    window.addEventListener("resize",()=>{
+        setswidth(window.screen.width);
+    })
     return (
         <div id='cart'>
             {cart.length > 0 ?
@@ -13,9 +17,9 @@ const Cart = () => {
                     <div id="order-items">
                         <div className="label">
                             <h4>item</h4>
-                            <h4>price</h4>
+                            {swidth > 767 && <h4>price</h4>}
                             <h4>quantity</h4>
-                            <h4>subtotal</h4>
+                            {swidth > 767 && <h4>subtotal</h4>}
                             <h4>remove</h4>
                         </div>
                         <hr />
