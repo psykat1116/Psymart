@@ -76,7 +76,7 @@ const CartReducer = (state, action) => {
         })
         return {
             ...state,
-            cart: updatedCart,
+            cart: (updatedCart!==null && updatedCart),
         }
     }
     if (action.type === "DELETE_ALL_ITEM") {
@@ -89,7 +89,7 @@ const CartReducer = (state, action) => {
         let { cart } = state;
         return {
             ...state,
-            total_item: cart.length,
+            total_item: cart && cart.length,
         }
     }
     if (action.type === "GET_TOTAL_PRICE") {

@@ -6,7 +6,10 @@ const Cartstate = (props) => {
 
     const getLocalCartData = () => {
         let newCartData = localStorage.getItem("cart");
-        if (newCartData === []) {
+        if(newCartData === null) {
+            return [];
+        }
+        if (newCartData.length === 0) {
             return [];
         }
         else {
